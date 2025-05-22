@@ -6,7 +6,7 @@ const event: Event = {
   once: true,
   execute: async (c: Client) => {
     console.info(`Logged in as ${c.user?.tag}!`);
-    c.user?.setPresence({
+    await c.user?.setPresence({
       status: "online",
       activities: [
         {

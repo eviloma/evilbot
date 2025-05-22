@@ -23,16 +23,16 @@ export async function registerLavalinkEvents(client: Client) {
     return;
   }
 
-  lavalink.on("debug", (logs) => {
+  lavalink.on("debug", logs => {
     if (!env.isDev) return;
     console.info("[DEBUG] Lavalink,", logs);
   });
 
-  lavalink.on("nodeClosed", (node) => {
+  lavalink.on("nodeClosed", node => {
     console.warn(`[WARN] Lavalink ${node.options.name}: Closed`);
   });
 
-  lavalink.on("nodeConnect", (node) => {
+  lavalink.on("nodeConnect", node => {
     console.info(`[INFO] Lavalink ${node.options.name}: Connected`);
   });
 
@@ -40,11 +40,11 @@ export async function registerLavalinkEvents(client: Client) {
     console.error(`[ERROR] Lavalink ${node.options.name}: Error`, error);
   });
 
-  lavalink.on("nodeReconnect", (node) => {
+  lavalink.on("nodeReconnect", node => {
     console.info(`[INFO] Lavalink ${node.options.name}: Reconnecting`);
   });
 
-  lavalink.on("playerCreate", (player) => {
+  lavalink.on("playerCreate", player => {
     console.info(`[INFO] Lavalink ${player.textId}: Created`);
   });
 
@@ -61,7 +61,7 @@ export async function registerLavalinkEvents(client: Client) {
     client.nowPlaying = undefined;
   });
 
-  lavalink.on("playerDestroy", (player) => {
+  lavalink.on("playerDestroy", player => {
     client.nowPlaying = undefined;
     client.updateMusicController(player);
   });

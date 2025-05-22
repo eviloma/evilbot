@@ -28,15 +28,21 @@ export class GreetingsCard extends Builder<Props> {
     return this;
   }
 
-  async render() {
+  render() {
     const { member, type, message } = this.options.getOptions();
 
-    const src = member.avatarURL({ extension: "png", size: 512 }) ?? "https://cdn.discordapp.com/embed/avatars/5.png";
+    const src =
+      member.avatarURL({ extension: "png", size: 512 }) ??
+      "https://cdn.discordapp.com/embed/avatars/5.png";
 
     return (
       <div className="flex h-full w-full flex-col items-center justify-center rounded-xl bg-[#191919]">
         <div className="flex h-[84%] w-[96%] items-center rounded-lg bg-[#252525] px-6">
-          <img src={src} alt="Avatar" className="flex h-[40] w-[40] rounded-full" />
+          <img
+            src={src}
+            alt="Avatar"
+            className="flex h-[40] w-[40] rounded-full"
+          />
           <div className="ml-6 flex flex-col">
             <h1 className="m-0 font-bold text-5xl text-white">
               {type === "welcome" ? "Welcome" : "Goodbye"},{" "}

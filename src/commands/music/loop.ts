@@ -1,6 +1,9 @@
 import type { Command } from "@/types/Command";
 import { getDefaultEmbed } from "@/utils/discord-embeds";
-import { getLavalinkPlayer, isAvalableToUseMusicCommands } from "@/utils/lavalink";
+import {
+  getLavalinkPlayer,
+  isAvalableToUseMusicCommands,
+} from "@/utils/lavalink";
 import { SlashCommandBuilder } from "discord.js";
 import type { RainlinkLoopMode } from "rainlink";
 
@@ -8,7 +11,7 @@ const command: Command = {
   data: new SlashCommandBuilder()
     .setName("loop")
     .setDescription("Change the loop mode.")
-    .addStringOption((o) =>
+    .addStringOption(o =>
       o
         .setName("mode")
         .setDescription("The loop mode to set.")
@@ -33,7 +36,9 @@ const command: Command = {
       embeds: [
         getDefaultEmbed(i.client)
           .setTitle("Music")
-          .setDescription(`🔁 Changed loop mode to ${mode === "none" ? "Off" : mode === "song" ? "Track" : "Queue"}`),
+          .setDescription(
+            `🔁 Changed loop mode to ${mode === "none" ? "Off" : mode === "song" ? "Track" : "Queue"}`,
+          ),
       ],
     });
   },

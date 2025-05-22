@@ -11,7 +11,9 @@ export async function getAllCommands() {
   for (const folder of commandFolders) {
     const commandFiles = await readdir(`${__dirname}/../commands/${folder}`);
     for (const commandFile of commandFiles) {
-      const command: Command = await import(`../commands/${folder}/${commandFile}`).then((e) => e.default);
+      const command: Command = await import(
+        `../commands/${folder}/${commandFile}`
+      ).then(e => e.default);
       if ("data" in command && "execute" in command) {
         commands.set(command.data.name, command);
       } else {
@@ -30,7 +32,9 @@ export async function getAllEvents() {
   const eventFiles = await readdir(`${__dirname}/../events`);
 
   for (const eventFile of eventFiles) {
-    const event: Event = await import(`../events/${eventFile}`).then((e) => e.default);
+    const event: Event = await import(`../events/${eventFile}`).then(
+      e => e.default,
+    );
     if ("name" in event && "execute" in event) {
       events.push(event);
     }
@@ -43,7 +47,9 @@ export async function getAllButons() {
   const buttonFiles = await readdir(`${__dirname}/../buttons`);
 
   for (const buttonFile of buttonFiles) {
-    const button: Button = await import(`../buttons/${buttonFile}`).then((e) => e.default);
+    const button: Button = await import(`../buttons/${buttonFile}`).then(
+      e => e.default,
+    );
     if ("id" in button && "execute" in button) {
       buttons.set(button.id, button);
     }

@@ -1,10 +1,15 @@
 import type { Command } from "@/types/Command";
 import { getDefaultEmbed } from "@/utils/discord-embeds";
-import { getLavalinkPlayer, isAvalableToUseMusicCommands } from "@/utils/lavalink";
+import {
+  getLavalinkPlayer,
+  isAvalableToUseMusicCommands,
+} from "@/utils/lavalink";
 import { SlashCommandBuilder } from "discord.js";
 
 const command: Command = {
-  data: new SlashCommandBuilder().setName("queue").setDescription("Show the current queue."),
+  data: new SlashCommandBuilder()
+    .setName("queue")
+    .setDescription("Show the current queue."),
   async execute(i) {
     await i.deferReply({ ephemeral: true });
     isAvalableToUseMusicCommands(i);
@@ -21,7 +26,9 @@ const command: Command = {
       data += `\nand **${player.queue.length - 10}** more...`;
     }
 
-    const embed = getDefaultEmbed(i.client).setTitle("Queue").setDescription(data);
+    const embed = getDefaultEmbed(i.client)
+      .setTitle("Queue")
+      .setDescription(data);
     await i.editReply({ embeds: [embed] });
   },
 };

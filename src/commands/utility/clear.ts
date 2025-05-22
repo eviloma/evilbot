@@ -6,9 +6,11 @@ import { PermissionFlagsBits, SlashCommandBuilder } from "discord.js";
 const command: Command = {
   data: new SlashCommandBuilder()
     .setName("clear")
-    .setDescription("Clear the current channel's messages, but maximum 14 days old.")
+    .setDescription(
+      "Clear the current channel's messages, but maximum 14 days old.",
+    )
     .setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages)
-    .addIntegerOption((el) =>
+    .addIntegerOption(el =>
       el
         .setName("amount")
         .setDescription("The amount of messages to delete.")
@@ -18,12 +20,18 @@ const command: Command = {
     ),
   async execute(i) {
     const { client, options, channel } = i;
-    if (!channel?.isTextBased() || channel.isDMBased()) throw OnlyGuildTextChannel;
+    if (!channel?.isTextBased() || channel.isDMBased())
+      throw OnlyGuildTextChannel;
 
-    const messages = await channel.bulkDelete(options.getInteger("amount", true), true);
+    const messages = await channel.bulkDelete(
+      options.getInteger("amount", true),
+      true,
+    );
     i.reply({
       embeds: [
-        getDefaultEmbed(client).setTitle("Successful clear!").setDescription(`🧹 Cleared ${messages.size} messages!`),
+        getDefaultEmbed(client)
+          .setTitle("Successful clear!")
+          .setDescription(`🧹 Cleared ${messages.size} messages!`),
       ],
       ephemeral: true,
     });

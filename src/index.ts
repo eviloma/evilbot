@@ -25,6 +25,7 @@ client.lavalink = createLavalinkClient(client);
 await registerLavalinkEvents(client);
 
 client.buttons = await getAllButons();
-client.updateMusicController = (player: RainlinkPlayer) => updateMusicController(client, player);
+client.updateMusicController = (player: RainlinkPlayer) =>
+  updateMusicController(client, player);
 
 client.login(env.BOT_TOKEN);

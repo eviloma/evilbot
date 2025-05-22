@@ -1,4 +1,7 @@
-import { FailedGenerateImage, OnlyGuildTextChannel } from "@/classes/CustomError";
+import {
+  FailedGenerateImage,
+  OnlyGuildTextChannel,
+} from "@/classes/CustomError";
 import type { Command } from "@/types/Command";
 import { canvacord } from "canvacord";
 import { GuildMember, SlashCommandBuilder, type User } from "discord.js";
@@ -7,12 +10,28 @@ const command: Command = {
   data: new SlashCommandBuilder()
     .setName("distracted")
     .setDescription("Create an distracted avatar and send it!")
-    .addUserOption((el) => el.setName("first-user").setRequired(true).setDescription("The first user to distract."))
-    .addUserOption((el) => el.setName("second-user").setRequired(true).setDescription("The second user to distract."))
-    .addUserOption((el) => el.setName("third-user").setRequired(true).setDescription("The third user to distract.")),
+    .addUserOption(el =>
+      el
+        .setName("first-user")
+        .setRequired(true)
+        .setDescription("The first user to distract."),
+    )
+    .addUserOption(el =>
+      el
+        .setName("second-user")
+        .setRequired(true)
+        .setDescription("The second user to distract."),
+    )
+    .addUserOption(el =>
+      el
+        .setName("third-user")
+        .setRequired(true)
+        .setDescription("The third user to distract."),
+    ),
   async execute(i) {
     const { channel, member } = i;
-    if (!(channel?.isTextBased() && member instanceof GuildMember)) throw OnlyGuildTextChannel;
+    if (!(channel?.isTextBased() && member instanceof GuildMember))
+      throw OnlyGuildTextChannel;
 
     await i.deferReply();
 
@@ -29,7 +48,9 @@ const command: Command = {
       .catch(() => null);
     if (!image) throw FailedGenerateImage;
 
-    await i.editReply({ files: [{ attachment: image, name: "distracted.png" }] });
+    await i.editReply({
+      files: [{ attachment: image, name: "distracted.png" }],
+    });
   },
 };
 

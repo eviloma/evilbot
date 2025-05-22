@@ -14,7 +14,11 @@ const button: Button = {
     player.stop(true);
 
     await i.reply({
-      embeds: [getDefaultEmbed(client).setTitle("Music").setDescription("⏹️ Stopped playing")],
+      embeds: [
+        getDefaultEmbed(client)
+          .setTitle("Music")
+          .setDescription("⏹️ Stopped playing"),
+      ],
       ephemeral: true,
     });
   },

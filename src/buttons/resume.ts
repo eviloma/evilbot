@@ -14,7 +14,11 @@ const button: Button = {
     player.setPause(false);
 
     await i.reply({
-      embeds: [getDefaultEmbed(client).setTitle("Music").setDescription("▶️ Resumed playing")],
+      embeds: [
+        getDefaultEmbed(client)
+          .setTitle("Music")
+          .setDescription("▶️ Resumed playing"),
+      ],
       ephemeral: true,
     });
   },

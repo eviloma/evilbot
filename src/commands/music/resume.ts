@@ -1,10 +1,15 @@
 import type { Command } from "@/types/Command";
 import { getDefaultEmbed } from "@/utils/discord-embeds";
-import { getLavalinkPlayer, isAvalableToUseMusicCommands } from "@/utils/lavalink";
+import {
+  getLavalinkPlayer,
+  isAvalableToUseMusicCommands,
+} from "@/utils/lavalink";
 import { SlashCommandBuilder } from "discord.js";
 
 const command: Command = {
-  data: new SlashCommandBuilder().setName("resume").setDescription("Resume the current paused song."),
+  data: new SlashCommandBuilder()
+    .setName("resume")
+    .setDescription("Resume the current paused song."),
   async execute(i) {
     await i.deferReply({ ephemeral: true });
     isAvalableToUseMusicCommands(i);
@@ -13,7 +18,11 @@ const command: Command = {
     await player.setPause(false);
 
     await i.editReply({
-      embeds: [getDefaultEmbed(i.client).setTitle("Music").setDescription("▶️ Resumed playing")],
+      embeds: [
+        getDefaultEmbed(i.client)
+          .setTitle("Music")
+          .setDescription("▶️ Resumed playing"),
+      ],
     });
   },
 };

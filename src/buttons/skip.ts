@@ -14,7 +14,11 @@ const button: Button = {
     player.skip();
 
     await i.reply({
-      embeds: [getDefaultEmbed(client).setTitle("Music").setDescription("⏭️ Skipped song")],
+      embeds: [
+        getDefaultEmbed(client)
+          .setTitle("Music")
+          .setDescription("⏭️ Skipped song"),
+      ],
       ephemeral: true,
     });
   },

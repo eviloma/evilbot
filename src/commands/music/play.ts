@@ -1,14 +1,19 @@
 import { MusicSearchNotFound } from "@/classes/CustomError";
 import type { Command } from "@/types/Command";
 import { getDefaultEmbed } from "@/utils/discord-embeds";
-import { getLavalinkPlayer, isAvalableToUseMusicCommands } from "@/utils/lavalink";
+import {
+  getLavalinkPlayer,
+  isAvalableToUseMusicCommands,
+} from "@/utils/lavalink";
 import { SlashCommandBuilder } from "discord.js";
 
 const command: Command = {
   data: new SlashCommandBuilder()
     .setName("play")
     .setDescription("Play a song by name or URL.")
-    .addStringOption((o) => o.setName("query").setDescription("The song to play.").setRequired(true)),
+    .addStringOption(o =>
+      o.setName("query").setDescription("The song to play.").setRequired(true),
+    ),
   async execute(i) {
     await i.deferReply({ ephemeral: true });
     isAvalableToUseMusicCommands(i);

@@ -4,7 +4,10 @@ import { RainlinkLoopMode, type RainlinkPlayer } from "rainlink";
 import { getDefaultEmbed } from "./discord-embeds";
 import env from "./env";
 
-export default async function updateMusicController(c: Client, player: RainlinkPlayer) {
+export default async function updateMusicController(
+  c: Client,
+  player: RainlinkPlayer,
+) {
   if (!env.MUSIC_TEXT_CHANNEL_ID) return;
   const channel = c.channels.cache.get(env.MUSIC_TEXT_CHANNEL_ID);
   if (!(channel?.isTextBased() && channel instanceof GuildChannel)) return;
@@ -27,7 +30,9 @@ export default async function updateMusicController(c: Client, player: RainlinkP
     .setDescription(description)
     .setImage(track.artworkUrl ?? null);
 
-  const message = await channel.send({ embeds: [embed], components: [musicControllRow] }).catch(() => null);
+  const message = await channel
+    .send({ embeds: [embed], components: [musicControllRow] })
+    .catch(() => null);
   if (!message) return;
   c.musicMessage = message;
 }

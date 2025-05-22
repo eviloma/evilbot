@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "name": "evilbot",
-  "version": "5.0.4",
+  "version": "5.0.5",
   "description": "Official discord bot for Eviloma discord server",
   "homepage": "https://github.com/Eviloma/evilbot",
   "bugs": {
@@ -27,16 +27,18 @@
     "start": "bun .",
     "dev": "bun --watch .",
     "deploy-commands": "bun ./src/utils/deploy-commands.ts",
-    "check": "bunx biome check --write .",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "ts-check": "tsc",
     "prepare": "husky"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@types/bun": "latest",
-    "@types/react": "18",
+    "@types/react": "19",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.4.3"
+    "lint-staged": "^16.0.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
@@ -45,7 +47,7 @@
   "dependencies": {
     "canvacord": "^6.0.2",
     "dayjs": "^1.11.13",
-    "discord.js": "^14.17.3",
+    "discord.js": "^14.19.3",
     "easy-discord-components": "^1.1.2",
     "envalid": "^8.0.0",
     "rainlink": "^1.2.7"

@@ -5,7 +5,11 @@ import {
   MusicMissingVoiceChannel,
   MusicModuleDisabled,
 } from "@/classes/CustomError";
-import type { ChatInputCommandInteraction, Client, GuildMember } from "discord.js";
+import type {
+  ChatInputCommandInteraction,
+  Client,
+  GuildMember,
+} from "discord.js";
 import { Library, Rainlink } from "rainlink";
 import { nodes } from "../../lavalink.json";
 import env from "./env";
@@ -27,7 +31,8 @@ export function isAvalableToUseMusicCommands(i: ChatInputCommandInteraction) {
 
   if (i.channel !== channel) throw MusicChannelNotEqual;
   if (!member.voice.channel) throw MusicMissingVoiceChannel;
-  if (botVoiceChannel && member.voice.channel !== botVoiceChannel) throw MusicBotInOtherChannel;
+  if (botVoiceChannel && member.voice.channel !== botVoiceChannel)
+    throw MusicBotInOtherChannel;
 }
 
 export async function getLavalinkPlayer(i: ChatInputCommandInteraction) {

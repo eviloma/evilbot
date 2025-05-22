@@ -3,7 +3,9 @@ import type { Command } from "@/types/Command";
 import { type GuildMember, SlashCommandBuilder } from "discord.js";
 
 const commands: Command = {
-  data: new SlashCommandBuilder().setName("test").setDescription("Replies with Pong!"),
+  data: new SlashCommandBuilder()
+    .setName("test")
+    .setDescription("Replies with Pong!"),
   async execute(i) {
     await i.deferReply();
 

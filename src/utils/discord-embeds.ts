@@ -11,9 +11,15 @@ export function getDefaultEmbed(c: Client) {
 }
 
 export function getErrorEmbed(c: Client, description: string) {
-  return getDefaultEmbed(c).setColor("Red").setTitle("Error").setDescription(`⛔ ${description}`);
+  return getDefaultEmbed(c)
+    .setColor("Red")
+    .setTitle("Error")
+    .setDescription(`⛔ ${description}`);
 }
 
 export function getWarningEmbed(c: Client, description: string) {
-  return getDefaultEmbed(c).setColor("Yellow").setTitle("Warning").setDescription(`⚠️ ${description}`);
+  return getDefaultEmbed(c)
+    .setColor("Yellow")
+    .setTitle("Warning")
+    .setDescription(`⚠️ ${description}`);
 }

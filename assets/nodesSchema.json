@@ -30,7 +30,11 @@
             },
             "driver": {
               "type": "string",
-              "enum": ["lavalink/v4/koinu", "lavalink/v3/koto", "nodelink/v2/nari"],
+              "enum": [
+                "lavalink/v4/koinu",
+                "lavalink/v3/koto",
+                "nodelink/v2/nari"
+              ],
               "description": "https://rainlinkjs.vercel.app/introduction/how-to-use"
             }
           },

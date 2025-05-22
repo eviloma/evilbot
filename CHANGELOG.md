@@ -8,6 +8,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) 
 
 ---
 
+## [**5.0.5**] - 22.05.2025
+
+- Fixed: guildMemberAdd event execute only once
+
 ## [**5.0.4**] - 29.01.2025
 
 - Added: More holidays
